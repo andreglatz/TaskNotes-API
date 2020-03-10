@@ -1,12 +1,11 @@
 require('dotenv').config();
 require('./Database/Connections/Postgresql');
 const middleware = require('./middleware/auth');
-const jwt = require('jsonwebtoken');
 
 const express = require('express');
 const bodyParser = require('body-parser');
 
-const routerTodo = require('./Routes/routesTodo');
+const routerTask = require('./Routes/routesTask');
 const routerAuth = require('./Routes/routesAuth');
 const routerTest = require('./Routes/routesTest');
 
@@ -19,7 +18,7 @@ app.use(routerAuth);
 
 app.use(middleware);
 
-app.use(routerTodo);
+app.use(routerTask);
 
 
 app.listen(process.env.PORT, () => console.log('Escutando na porta ' + process.env.PORT));

@@ -1,12 +1,11 @@
-const Todo = require('../Models/Todo');
+const Task = require('../Models/Task');
 
 // INDEX, SHOW, STORE, UPDATE, DESTROY
 module.exports = {
     async show(req, res) {
         try {
-
-            const todos = await Todo.find().where('id').limit(10);
-            res.json({ todos });
+            const Tasks = await Task.find().where('id').limit(10);
+            res.json({ Tasks });
         } catch (e) {
             console.log(e);
             res.status(500).json({ error: { message: "Server error", code: 5 } });
@@ -17,7 +16,7 @@ module.exports = {
         try {
             var { description, userId } = req.body;
 
-            const created = await Todo.create({
+            const created = await Task.create({
                 description,
                 userId
             });
@@ -31,10 +30,18 @@ module.exports = {
 
     async update(req, res) {
         try {
-            const { userId } = req.body;
+            const { userId, description } = req.body;
+
+            const updated = await Task.updateOne({ user: userId }, {
+                description
+            });
+
+            res.json({ success: true, updated });
 
 
         } catch (e) {
+
+            return res.status(500).json({ error: { message: "Server error", code: 9 } });
 
         }
     }

@@ -1,6 +1,6 @@
 const mongoose = require('../Database/Connections/Mongodb');
 
-const TodoSchema = new mongoose.Schema({
+const TaskSchema = new mongoose.Schema({
     description: {
         type: String
     },
@@ -9,6 +9,6 @@ const TodoSchema = new mongoose.Schema({
     }
 }, { timestamps: true });
 
-const Todo = mongoose.model('Todo', TodoSchema);
+const Task = mongoose.model('Task', TaskSchema);
 
-module.exports = Todo;
+module.exports = Task;
