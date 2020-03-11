@@ -17,3 +17,5 @@ module.exports = {
         return await bcrypt.hash(password, 8);
     }
 }
+
+
