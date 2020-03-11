@@ -7,7 +7,7 @@ module.exports = (req, res, next) => {
 
         if (!token) throw 6;
         jwt.verify(token, process.env.SECRET, (e, decoded) => {
-            if (e) console.log(e);
+            if (e) throw e;
 
             req.body.userId = decoded.id;
             next();
@@ -18,11 +18,10 @@ module.exports = (req, res, next) => {
             case 6:
                 e = { error: { message: "No token provided.", code: 6 } };
                 break;
-            case 7:
-                e = { error: { message: "Invalid token.", code: 7 } };
+            default:
+                e = { error: { message: e.message, code: 7 } };
                 break;
         }
-        console.log(e);
         res.status(401).json(e);
     }
 }
