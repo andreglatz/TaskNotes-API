@@ -4,7 +4,8 @@ const Task = require('../Models/Task');
 module.exports = {
     async show(req, res) {
         try {
-            const Tasks = await Task.find().where('id').limit(10);
+
+            const Tasks = await Task.find().where('user').equals(req.body.userId);
             res.json({ Tasks });
         } catch (e) {
             console.log(e);
@@ -18,7 +19,7 @@ module.exports = {
 
             const created = await Task.create({
                 description,
-                userId
+                user: userId
             });
 
             res.json({ success: true, created });
