@@ -31,17 +31,18 @@ module.exports = {
 
     async update(req, res) {
         try {
+            const { taskID } = req.params;
             const { userId, description } = req.body;
 
-            const updated = await Task.updateOne({ user: userId }, {
+            const updated = await Task.findOneAndUpdate({ _id: taskID, user: userId }, {
                 description
-            });
+            }, { upsert: true, useFindAndModify: false, new: true });
 
             res.json({ success: true, updated });
 
 
         } catch (e) {
-
+            console.log(e);
             return res.status(500).json({ error: { message: "Server error", code: 9 } });
 
         }
