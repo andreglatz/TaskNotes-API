@@ -8,9 +8,7 @@ module.exports = {
     },
 
     generateToken(id) {
-        return jwt.sign({ id }, process.env.SECRET, {
-            expiresIn: '1d'
-        });
+        return jwt.sign({ id }, process.env.SECRET);
     },
 
     async hashPassword(password) {
