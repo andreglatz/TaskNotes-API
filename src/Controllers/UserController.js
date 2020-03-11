@@ -12,7 +12,7 @@ module.exports = {
 
             user = await User.findOne({ where: { user } });
 
-            if (await Auth.compareHash(password, user.password)) {
+            if (user != null && await Auth.compareHash(password, user.password)) {
                 var token = Auth.generateToken(user.id);
             } else {
                 throw 1
@@ -26,7 +26,7 @@ module.exports = {
                 e = { error: { message: "User or password is not enough", code: 3 } }
             } else {
                 if (e == 1) {
-                    e = { error: { message: "User not found", code: 4 } }
+                    e = { error: { message: "User or password incorrect", code: 4 } }
                 }
             }
             console.log(e);
