@@ -14,9 +14,9 @@ module.exports = {
     local: {
         dialect: 'postgres',
         host: "localhost",
-        username: "user",
+        username: "dev",
         password: "glatz",
-        database: "TaskNotes",
+        database: "tasknotes",
         logging: false,
         define: {
             timestamps: true,
