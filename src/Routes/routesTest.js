@@ -5,19 +5,13 @@ const postgresql = require('../Database/Connections/Postgresql');
 
 router.get('/', async (req, res) => {
 
-    var testPost;
-    try {
-        testPost = await postgresql.query('SELECT 1+0 AS result');
-        testPost = testPost[0][0].result;
-    } catch (e) {
-        testPost = 0;
-    }
+    const testPost = await postgresql.query('SELECT 1+0 AS result');
 
     res.json({
         API: 'TaskList',
         Version: '1.0',
         MongoDB: mongodb.connection.readyState,
-        PostgreSQL: testPost
+        PostgreSQL: testPost[0][0].result
     });
 });
 
