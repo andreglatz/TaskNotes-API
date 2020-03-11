@@ -39,12 +39,23 @@ module.exports = {
             }, { upsert: true, useFindAndModify: false, new: true });
 
             res.json({ success: true, updated });
-
-
         } catch (e) {
             console.log(e);
             return res.status(500).json({ error: { message: "Server error", code: 9 } });
+        }
+    },
 
+    async delete(req, res) {
+        try {
+            const { taskID } = req.params;
+            const { userId, description } = req.body;
+
+            const deleted = await Task.findOneAndDelete({ _id: taskID, user: userId });
+
+            res.json({ success: true, deleted });
+        } catch (e) {
+            console.log(e);
+            return res.status(500).json({ error: { message: "Server error", code: 10 } });
         }
     }
 }
