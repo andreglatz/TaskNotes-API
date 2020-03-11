@@ -5,7 +5,8 @@ const TaskSchema = new mongoose.Schema({
         type: String
     },
     user: {
-        type: Number
+        type: Number,
+        select: false
     }
 }, { timestamps: true });
 
