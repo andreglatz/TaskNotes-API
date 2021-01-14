@@ -148,7 +148,7 @@ Rota responsável por gerenciamento das TasksNotes como:
 **Request:**
 ```json
 {
-	"description": "Tenho que pegar a van"
+	"description": "Estudar para a prova"
 }
 ```
 
@@ -195,7 +195,7 @@ Rota responsável por gerenciamento das TasksNotes como:
 **Request:**
 ```json
 {
-	"description": "Precismo terminar isso logo"
+	"description": "Estudar Node.js"
 }
 ```
 
@@ -205,7 +205,7 @@ Rota responsável por gerenciamento das TasksNotes como:
   "success": true,
   "updated": {
     "_id": "5e69440ca68e4839d457dadc",
-    "description": "Dar comida para o cachorro",
+    "description": "Estudar Node.js",
     "createdAt": "2020-03-11T20:03:24.916Z",
     "updatedAt": "2020-03-11T22:52:27.229Z",
     "__v": 0
@@ -225,7 +225,7 @@ Rota responsável por gerenciamento das TasksNotes como:
   "success": true,
   "updated": {
     "_id": "5e69440ca68e4839d457dadc",
-    "description": "Dar comida para o cachorro",
+    "description": "Estudar Node.js",
     "createdAt": "2020-03-11T20:03:24.916Z",
     "updatedAt": "2020-03-11T22:52:27.229Z",
     "__v": 0
